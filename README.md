@@ -6,6 +6,7 @@ Photostream works by displaying the last few months of pictures. After a while t
 
 ## Usage (draft)
 
+- Install [AutoHotKey_L](http://l.autohotkey.net/). Compiled versions may be provided at a later date. Also currently development is happening against the Unicode x86 version.
 - Copy `config-default.ini` to `config.ini`
 - Edit this file for your setup
     - `source_dir`: The source directory. Typically all you have to do is change the `YOUR_USERNAME` part of it
