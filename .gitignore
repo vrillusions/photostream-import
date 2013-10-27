@@ -1,1 +1,2 @@
-# Initial .gitignore
+/config.ini
+/*.log
