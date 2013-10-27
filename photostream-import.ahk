@@ -10,11 +10,10 @@
 
 VERSION := "0.1.0"
 
-; BUG: if some fatal error happens and app closes it doesn't close the whole
-; application. Thus needs this to say only have one running.
 #SingleInstance force
 #NoEnv
-;;#Warn ; Only uncomment when testing
+; Shouldn't hurt to leave uncommented but don't know if it slows things
+;#Warn
 SendMode Input ; A lot of examples say this is faster than default
 ; TODO: Use this as an option so working dir can be set to user directory
 SetWorkingDir %A_ScriptDir%
@@ -37,8 +36,7 @@ if (FileExist(source_dir) = "")
 if (FileExist(dest_dir) = "")
     HandleError("dest_dir " . dest_dir . " does not exist")
 
-;ListVars
-;Pause
+
 Loop, %source_dir%\*
 {
     ; Don't copy desktop.ini in case it would mess with whatever photo program
@@ -78,9 +76,11 @@ Loop, %source_dir%\*
 LogMsg("INFO", "Done")
 ExitApp
 
+
 ; Prints the given error to log and screen and exits app
 HandleError(str)
 {
+    ; Uncomment the following for a basic break point when debugging
     ;ListVars
     ;Pause
     LogMsg("ERROR", str)
@@ -88,11 +88,13 @@ HandleError(str)
     ExitApp
 }
 
+
 ; Logs the given string to %log_file%
 LogMsg(error_level, str)
 {
     global enable_log
     global ignore_log_level
+    ; TODO: have the second part use ` === False` instead?
     if (enable_log != "false" && InStr(ignore_log_level, error_level) = False)
     {
         global log_file
@@ -105,13 +107,8 @@ LogMsg(error_level, str)
     }
 }
 
+
 HandleExit:
     LogMsg("INFO", "Exiting app. Reason: " . A_ExitReason)
     ExitApp
 
-
-/* This would be more useful if I had a gui
-GuiEscape:
-GuiClose:
-ExitApp
-*/
