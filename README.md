@@ -24,7 +24,10 @@ Photostream works by displaying the last few months of pictures. After a while t
 
 ## Caveats
 
-First off read the intro paragraphs. Also I don't copy `desktop.ini` as this is a system file that doesn't contain any information about the photos. Also it may clash with whatever tool you use to manage photos.
+- First off read the intro paragraphs. In part I plan on addressing it with #1.
+- I don't copy `desktop.ini` as this is a system file that doesn't contain any information about the photos. Also it may clash with whatever tool you use to manage photos.
+- Currently comparison is only by file name. So if multiple items exist in the same period (eg for 'year' this means all files from that year are grouped together. For 'day' it would require different images to have the same filename for the same day). This is being worked on #2.
+- As part of #2 I may end up rewriting this in python as things are already progressing further than I think AutoHotKey was designed for.
 
 ## License
 
